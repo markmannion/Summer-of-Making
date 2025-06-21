@@ -1,0 +1,28 @@
+name: golf_yardage_calculator
+description: ISE Submission Project
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  provider: ^6.0.0
+  url_launcher: ^6.0.20
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/golf_dark.png
+    - assets/images/golf_white.png
+    - assets/images/range_black.png
+    - assets/images/range_white.png
