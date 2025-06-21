@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
-
+import 'settings.dart';
 
 //linking to the python app through a local network
 fetchData(String url) async {
@@ -58,6 +58,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/calculator': (context) => GolfApp(),
             '/belvelly': (context) => Belvelly(),
+            '/settings': (context) => const SettingsPage(),
           },
         );
       },
@@ -82,6 +83,14 @@ class HomePage extends StatelessWidget {
             fontWeight: FontWeight.bold,
             ),
           ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.pushNamed(context, '/settings');
+              }
+            )
+          ]
         ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
