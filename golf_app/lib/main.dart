@@ -11,6 +11,15 @@ fetchData(String url) async {
   return response.body;
 }
 
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: MyApp(),
+    ),
+  );
+}
+
 //Creating the light and dark themes for the app
 final lightTheme = ThemeData(
   brightness: Brightness.light,
@@ -31,15 +40,6 @@ class ThemeProvider extends ChangeNotifier {
     _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
-}
-
-void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
-      child: MyApp(),
-    ),
-  );
 }
 
 class MyApp extends StatelessWidget {
