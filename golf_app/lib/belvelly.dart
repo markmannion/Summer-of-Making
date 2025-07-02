@@ -136,9 +136,10 @@ class BelvellyState extends State<Belvelly> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
               Image.asset(
                 themeProvider.themeMode == ThemeMode.dark //change the image based on the theme
                     ? 'assets/images/range_white.png'
@@ -163,6 +164,7 @@ class BelvellyState extends State<Belvelly> {
           ),
         ),
       ),
-    );
+    )
+  );
   }
 }

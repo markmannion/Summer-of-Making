@@ -76,22 +76,20 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.settings),
+          onPressed: () {
+            Navigator.pushNamed(context, '/settings');
+          },
+        ),
         title: Text(
           'Yardage Calculator',
           style: TextStyle(
             fontSize: 38,
             fontWeight: FontWeight.bold,
-            ),
           ),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-                Navigator.pushNamed(context, '/settings');
-              }
-            )
-          ]
         ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
@@ -138,14 +136,6 @@ class HomePage extends StatelessWidget {
               ),
               Column(
                 children: [
-                  const Text('Light/Dark Theme', style: TextStyle(fontSize: 16)),
-                  Switch(
-                    value: themeProvider.themeMode == ThemeMode.dark,
-                    onChanged: (_) {
-                      themeProvider.toggleTheme();
-                    },
-                  ),
-                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () async{
                       final url = Uri.parse('https://github.com/markmannion');
@@ -238,9 +228,10 @@ class GolfAppState extends State<GolfApp> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
               Image.asset(
                 themeProvider.themeMode == ThemeMode.dark
                     ? 'assets/images/range_white.png'
@@ -248,14 +239,14 @@ class GolfAppState extends State<GolfApp> {
                 width: 200,
                 height: 200,
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 18),
               _buildInputCard('Yardage', yardController),
               _buildInputCard('Wind Speed MPH (Neg if downwind)', windController),
               _buildInputCard('Temperature *C', tempController),
               _buildInputCard('Hole', holeController),
               const SizedBox(height: 20),
               ElevatedButton(onPressed: calculate, child: const Text('Calculate',textAlign: TextAlign.center, style: TextStyle(fontSize: 22))),
-              const SizedBox(height: 25),
+              const SizedBox(height: 18),
               Text(
                 result,
                 textAlign: TextAlign.center,
@@ -265,7 +256,7 @@ class GolfAppState extends State<GolfApp> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildInputCard(String label, TextEditingController controller) {
@@ -379,40 +370,41 @@ class BelvellyState extends State<Belvelly> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
               Image.asset(
                 themeProvider.themeMode == ThemeMode.dark
                     ? 'assets/images/range_white.png'
                     : 'assets/images/range_black.png',
-                width: 200,
-                height: 200,
+                width: 120,
+                height: 120,
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 15),
               _buildInputCard('Yardage', yardController),
               _buildInputCard('Wind Speed MPH (Neg if downwind)', windController),
               _buildInputCard('Temperature *C', tempController),
               _buildInputCard('Hole', holeController),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               ElevatedButton(
                 onPressed: calculate,
                 child: const Text(
                   'Calculate',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 15),
               Text(
                 result,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ],
           ),
         ),
       ),
-    );
+    ));
   }
 }

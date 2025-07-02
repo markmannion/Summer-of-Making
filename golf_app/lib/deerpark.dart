@@ -117,15 +117,16 @@ class GolfAppState extends State<GolfApp> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
               Image.asset(
                 themeProvider.themeMode == ThemeMode.dark
                     ? 'assets/images/range_white.png' //change the image based on the theme
                     : 'assets/images/range_black.png',
                 width: 200,
-                height: 150,
+                height: 130,
               ),
               const SizedBox(height: 20),
               Image.asset(
@@ -133,27 +134,28 @@ class GolfAppState extends State<GolfApp> {
                     ? 'assets/images/range_white.png' //change the image based on the theme
                     : 'assets/images/range_black.png',
                 width: 200, 
-                height: 150, 
+                height: 130, 
               ),
               const SizedBox(height: 20),
               _buildInputCard('Yardage', yardController),
               _buildInputCard('Wind Speed MPH (Neg if downwind)', windController),
               _buildInputCard('Temperature *C', tempController),
               _buildInputCard('Hole', holeController),
-              const SizedBox(height: 20),
+              const SizedBox(height: 17),
               ElevatedButton(onPressed: calculate, child: const Text('Calculate')),
-              const SizedBox(height: 20),
+              const SizedBox(height: 17),
               Text(
                 result,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 17),
             ],
           ),
         ),
       ),
-    );
+    )
+  );
   }
 
   Widget _buildInputCard(String label, TextEditingController controller) {
